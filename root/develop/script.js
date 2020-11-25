@@ -2,15 +2,21 @@ var startButton = document.getElementById("startButton");
 startButton.addEventListener('click', beginQuiz); 
     
 function beginQuiz(startButton) {
-    console.log("click");
-    //beginTimer();
+    beginTimer();
     //showQuiz()
 }    
     
 function beginTimer() {
-    //this will be a setInterval function that starts time and invokes and time-out ending function
-}
+    var timeleft = 75;
+    var quizTimer = setInterval(function(){
+    if(timeleft <= 0){
+    clearInterval(quizTimer);
+    }
+    document.getElementById("timeLeft").textContent = ": " + timeleft;
+    timeleft -= 1;
+    }, 1000);
+    }
 
 function showQuiz() {
-    //this function will control what is displayed for each question
-}
+        //this function will control the flow of questions
+    }    
