@@ -1,10 +1,13 @@
 var startButton = document.getElementById("startButton");
-startButton.addEventListener('click', beginQuiz); 
-    
-function beginQuiz(startButton) {
+startButton.addEventListener('click', beginQuiz)
+var quizQuestion = 0
+
+function beginQuiz() {
+    console.log(startButton.id)
     beginTimer();
-    //showQuiz()
-}    
+    eleHide(startButton.id);
+    showQuiz(quizQuestion);
+};    
     
 function beginTimer() {
     var timeleft = 75;
@@ -17,6 +20,14 @@ function beginTimer() {
     }, 1000);
     }
 
-function showQuiz() {
-        //this function will control the flow of questions
-    }    
+function showQuiz(quizQuestion) {
+        console.log(quizQuestion);
+    }
+    
+function eleHide(ele) {
+    console.log(ele);
+    var hidden = document.getElementById(ele);
+    hidden.setAttribute('class', 'hide');
+
+    //ele.setAttribute('class') = 'hide'
+}    
