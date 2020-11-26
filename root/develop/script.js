@@ -2,7 +2,7 @@ var startButton = document.getElementById("startButton");
 startButton.addEventListener('click', beginQuiz)
 var quizQuestion = 0
 var quizBox = document.getElementById('quizBox');
-
+var i = 0
 var questions = [
     {
         Question: 'What is 2 + 2?',
@@ -13,6 +13,11 @@ var questions = [
         Correct: 'B'
     }
 ]
+
+for ([key, value] of questions.entries(i)) {
+    console.log(key, value);
+    i++
+}
 
 function beginQuiz() {
     console.log(startButton.id)
