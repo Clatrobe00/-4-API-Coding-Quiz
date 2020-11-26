@@ -18,7 +18,13 @@ function beginQuiz() {
     console.log(startButton.id)
     beginTimer();
     eleHide(startButton.id);
-    showQuiz(quizQuestion);
+    // I think I need a for loop here to iterate through the questions
+    var correctAnswer = showQuiz(quizQuestion);
+    console.log(correctAnswer);
+    hitOrMiss = verifyAnswer(userAnswer) //verifies the users answer with if statements - should return a boolean
+    scoreUpdate(hitOrMiss) //uses the boolean value to determine if scores increases
+    //for loop ends here.
+    // need to determine how the function to record the high score will look.
 };    
     
 function beginTimer() {
@@ -33,12 +39,16 @@ function beginTimer() {
     }
 
 function showQuiz(quizQuestion) {
+    // How this needs to realistically work:
+    // Create a for each function that iterates through the object and creates divs for each
+    // Return the correct answer from the array
         console.log(quizQuestion);
         console.log(questions[quizQuestion].A);
         nextQuestion = document.createElement('div');
         nextQuestion.setAttribute('class', 'question')
         nextQuestion.textContent = questions[quizQuestion].Question;
         quizBox.append(nextQuestion);
+        return questions[quizQuestion].Correct
 
 
     }
@@ -48,5 +58,8 @@ function eleHide(ele) {
     var hidden = document.getElementById(ele);
     hidden.setAttribute('class', 'hide');
 
-    //ele.setAttribute('class') = 'hide'
+    //ele.setAttribute('class') = 'hide' 
 }    
+
+function verifyAnswer(){};
+function scoreUpdate (){};
