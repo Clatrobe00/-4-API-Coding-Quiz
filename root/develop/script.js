@@ -1,6 +1,18 @@
 var startButton = document.getElementById("startButton");
 startButton.addEventListener('click', beginQuiz)
 var quizQuestion = 0
+var quizBox = document.getElementById('quizBox');
+
+var questions = [
+    {
+        Question: 'What is 2 + 2?',
+        A: '2',
+        B: '4',
+        C: '6',
+        D: '8',
+        Correct: 'B'
+    }
+]
 
 function beginQuiz() {
     console.log(startButton.id)
@@ -22,6 +34,13 @@ function beginTimer() {
 
 function showQuiz(quizQuestion) {
         console.log(quizQuestion);
+        console.log(questions[quizQuestion].A);
+        nextQuestion = document.createElement('div');
+        nextQuestion.setAttribute('class', 'question')
+        nextQuestion.textContent = questions[quizQuestion].Question;
+        quizBox.append(nextQuestion);
+
+
     }
     
 function eleHide(ele) {
