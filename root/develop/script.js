@@ -17,7 +17,9 @@ function beginQuiz() {
     eleHide(startButton.id);
     // I think I need a for loop here to iterate through the questions
     showQuiz();
-    //console.log(correctAnswer);
+    for (i; i < questions.length; i++) {
+        createQuestion(i);
+    }
     //hitOrMiss = verifyAnswer(userAnswer) //verifies the users answer with if statements - should return a boolean
     //scoreUpdate(hitOrMiss) //uses the boolean value to determine if scores increases
     //for loop ends here.
@@ -43,10 +45,13 @@ function showQuiz() {
     
 function eleHide(ele) {
     var hidden = document.getElementById(ele);
-    hidden.setAttribute('class', 'hide');
-
-    //ele.setAttribute('class') = 'hide' 
+    hidden.setAttribute('class', 'hide'); 
 }    
 
-//function verifyAnswer(){};
-//function scoreUpdate (){}
+function createQuestion (i) {
+    document.getElementById('question').textContent = questions[i]
+    document.getElementById('A').textContent = answersA[i]
+    document.getElementById('B').textContent = answersB[i]
+    document.getElementById('C').textContent = answersC[i]
+    document.getElementById('D').textContent = answersD[i]
+}
