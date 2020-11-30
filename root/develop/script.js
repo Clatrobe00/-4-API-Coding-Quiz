@@ -14,6 +14,7 @@ var correctAnswers = ["B"]
 
 
 function beginQuiz() {
+    console.log(event.target.id)
     beginTimer();
     eleHide(startButton.id);
     // I think I need a for loop here to iterate through the questions
@@ -61,20 +62,21 @@ function createQuestion (i) {
 
 function getAnswer (i) {
     document.querySelectorAll('.answerButton').forEach(answer => {
-        answer.addEventListener('click', event => {
-          if (answer.id === correctAnswers[i]) {
-              var status = true
-              console.log(status)
-          } else if (answer.id !== correctAnswers[i]) {
-              var status = false
-              console.log(status)
-          }
-        })
-        return status  
-      })
-    
-       
+    testAn = answer.addEventListener('click', testFun); 
+    console.log(testAn);
+    }
+    )}
+
+function testFun () {
+    let message = "fuck"
+    return message
 }
+
+
+
+// new idea:
+
+// that idea was too work intensive. new idea. seperate 
 
     
 
