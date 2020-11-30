@@ -1,34 +1,54 @@
 var startButton = document.getElementById("startButton");
-startButton.addEventListener('click', beginQuiz)
-// var quizQuestion = 0
-var quizBox = document.getElementById('quizBox');
 var i = 0
-var questions = [
-    "What is 2 + 2"
+var quizBox = document.getElementById('quizBox');
+startButton.addEventListener('click', beginQuiz)
+answerButtons = document.querySelectorAll(".answerButton")
+answerButtons.forEach((button) => {
+    button.addEventListener('click', evaluate)
+});
+
+
+let questions = [
+    {
+        question: "What do we use to style a webpage?",
+        answersA: "CSS",
+        answersB: "HTML",
+        answersC: "Javascript",
+        answersD: "Jquery",
+        correctAnswer: "A"
+    },
+    {
+        question: "What do we use to mark up pages?",
+        answersA: "HTML",
+        answersB: "CSS",
+        answersC: "Javascript",
+        answersD: "JQuery",
+        correctAnswer: "A"
+    },
+    {
+        question: "What does CSS stand for?",
+        answersA: "Cascading Style Sheets",
+        answersB: "Columbia Style School",
+        answersC: "Crumbling Skill Saw",
+        answersD: "Chimera Snap Shot",
+        correctAnswer: "A",
+    }
 ]
-var answersA = ["A: 2"]
-var answersB = ["B: 4"]
-var answersC = ["C: 6"]
-var answersD = ["D: 8"]
-var correctAnswers = ["B"]
 
 
 function beginQuiz() {
-    console.log(event.target.id)
     beginTimer();
     eleHide(startButton.id);
     // I think I need a for loop here to iterate through the questions
     showQuiz();
-    for (i; i < questions.length; i++) {
-        createQuestion(i);
-        answer = getAnswer(i);
-        console.log(answer);
-    }
+    getNewQuestion(i) 
+     
+    } 
+
     //hitOrMiss = verifyAnswer(userAnswer) //verifies the users answer with if statements - should return a boolean
     //scoreUpdate(hitOrMiss) //uses the boolean value to determine if scores increases
     //for loop ends here.
-    // need to determine how the function to record the high score will look.
-};    
+    // need to determine how the function to record the high score will look.    
     
 function beginTimer() {
     var timeleft = 75;
@@ -52,25 +72,29 @@ function eleHide(ele) {
     hidden.setAttribute('class', 'hide'); 
 }    
 
-function createQuestion (i) {
-    document.getElementById('question').textContent = questions[i]
-    document.getElementById('A').textContent = answersA[i]
-    document.getElementById('B').textContent = answersB[i]
-    document.getElementById('C').textContent = answersC[i]
-    document.getElementById('D').textContent = answersD[i]
-}
+function getNewQuestion (i) {
+    var newQuestion = questions[i]
+    document.getElementById('question').textContent = newQuestion.question
+    document.getElementById('A').textContent = newQuestion.answersA
+    document.getElementById('B').textContent = newQuestion.answersB
+    document.getElementById('C').textContent = newQuestion.answersC
+    document.getElementById('D').textContent = newQuestion.answersD
+};
 
-function getAnswer (i) {
-    document.querySelectorAll('.answerButton').forEach(answer => {
-    testAn = answer.addEventListener('click', testFun); 
-    console.log(testAn);
+function evaluate (event) {
+    if (event.target.id === questions[i].correctAnswer) {
+        console.log('correct')
+    } else if (event.target.id !== questions[i].correctAnswer) {
+        console.log('whoops!')
     }
-    )}
+    i++
+    getNewQuestion(i);
+};
 
-function testFun () {
-    let message = "fuck"
-    return message
-}
+
+
+
+
 
 
 
