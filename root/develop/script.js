@@ -10,6 +10,7 @@ var answersA = ["A: 2"]
 var answersB = ["B: 4"]
 var answersC = ["C: 6"]
 var answersD = ["D: 8"]
+var correctAnswers = ["B"]
 
 
 function beginQuiz() {
@@ -19,6 +20,8 @@ function beginQuiz() {
     showQuiz();
     for (i; i < questions.length; i++) {
         createQuestion(i);
+        answer = getAnswer(i);
+        console.log(answer);
     }
     //hitOrMiss = verifyAnswer(userAnswer) //verifies the users answer with if statements - should return a boolean
     //scoreUpdate(hitOrMiss) //uses the boolean value to determine if scores increases
@@ -55,3 +58,27 @@ function createQuestion (i) {
     document.getElementById('C').textContent = answersC[i]
     document.getElementById('D').textContent = answersD[i]
 }
+
+function getAnswer (i) {
+    document.querySelectorAll('.answerButton').forEach(answer => {
+        answer.addEventListener('click', event => {
+          if (answer.id === correctAnswers[i]) {
+              var status = true
+              console.log(status)
+          } else if (answer.id !== correctAnswers[i]) {
+              var status = false
+              console.log(status)
+          }
+        })
+        return status  
+      })
+    
+       
+}
+
+    
+
+       
+
+  
+    
