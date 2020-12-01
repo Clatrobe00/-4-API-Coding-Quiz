@@ -30,6 +30,14 @@ let questions = [
         answersC: "Crumbling Skill Saw",
         answersD: "Chimera Snap Shot",
         correctAnswer: "A",
+    },
+    {
+        question: "What is the color of night?",
+        answersA: "Huh?",
+        answersB: "Sanguine, my brother",
+        answersC: "Oh no I forgot",
+        answersD: "Dark... Blue?",
+        correctAnswer: "B",
     }
 ]
 
