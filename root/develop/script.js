@@ -2,12 +2,7 @@ var timeleft = 75
 var startButton = document.getElementById("startButton");
 var i = 0
 var quizBox = document.getElementById('quizBox');
-startButton.addEventListener('click', beginQuiz)
-answerButtons = document.querySelectorAll(".answerButton")
-answerButtons.forEach((button) => {
-    button.addEventListener('click', evaluate)
-});
-
+var quizTimer;
 
 let questions = [
     {
@@ -36,10 +31,15 @@ let questions = [
     }
 ]
 
+startButton.addEventListener('click', beginQuiz)
+answerButtons = document.querySelectorAll(".answerButton")
+answerButtons.forEach((button) => {
+    button.addEventListener('click', evaluate)
+}); 
 
-function beginQuiz() {
-    time = beginTimer(timeleft);
-    console.log(time);
+
+function beginQuiz(timeleft) {
+    time = setInterval(beginTimer, 1000);
     eleHide(startButton.id);
     // I think I need a for loop here to iterate through the questions
     showQuiz();
@@ -52,17 +52,15 @@ function beginQuiz() {
     //for loop ends here.
     // need to determine how the function to record the high score will look.    
     
-function beginTimer(timeleft) {
-    
-    var quizTimer = setInterval(function(){
+function beginTimer() {
     if(timeleft <= 0){
-    clearInterval(quizTimer);
+    clearInterval(time);
     }
     document.getElementById("timeLeft").textContent = timeleft;
     timeleft -= 1;
-    }, 1000);
+    };
     
-    }
+    
 
 function showQuiz() {
     let quizQuestions = document.getElementById("quizQuestions")
@@ -84,7 +82,7 @@ function getNewQuestion (i) {
     document.getElementById('D').textContent = newQuestion.answersD
 };
 
-function evaluate (event) {
+function evaluate () {
     if (event.target.id === questions[i].correctAnswer) {
         console.log('correct')
     } else if (event.target.id !== questions[i].correctAnswer) {
@@ -96,10 +94,12 @@ function evaluate (event) {
 };
 
 function subtractTime () {
-    var time = document.getElementById('timeLeft').textContent;
-    newTime = parseInt(time);
-    newTime = newTime -= 10;
-    beginTimer(newTime);
+    var currentTime = document.getElementById('timeLeft').textContent;
+    window.clearInterval(time)
+    var newTime = parseInt(currentTime);
+    console.log(newTime)
+    timeleft = newTime -= 10;
+    time = setInterval (beginTimer, 1000);
     //document.getElementById('incorrect').addEventListener('click', function() {
     //    sec -= 5;
     //    document.getElementById('timerDisplay').innerHTML='00:'+sec;
