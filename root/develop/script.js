@@ -34,10 +34,13 @@ let questions = [
 
 startButton.addEventListener('click', beginQuiz)
 
-answerButtons = document.querySelectorAll(".answerButton")
+let answerButtons = document.querySelectorAll(".answerButton")
 answerButtons.forEach((button) => {
     button.addEventListener('click', evaluate)
 }); 
+
+let submitButton = document.getElementById('submitButton')
+submitButton.addEventListener('click', saveScore);
 
 function beginQuiz(timeleft) {
     time = setInterval(beginTimer, 1000);
@@ -105,4 +108,10 @@ function callHighScore () {
     window.clearInterval(time);
     eleHide(quizBox.id);
     showContent(scoreInput.id);
+}
+
+function saveScore () {
+    event.preventDefault();
+    localStorage.setItem('name', document.getElementById('userNameInput').value);
+    localStorage.setItem('score', document.getElementById('timeLeft').textContent);
 }
