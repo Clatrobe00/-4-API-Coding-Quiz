@@ -80,6 +80,16 @@ function evaluate () {
         subtractTime()
     }
     i++
+
+    if (i === questions.length) {
+        window.clearInterval(time);
+        eleHide(quizBox.id);
+        //callHighScore()
+        console.log('done');
+        return
+
+    }
+
     getNewQuestion(i);
 };
 
