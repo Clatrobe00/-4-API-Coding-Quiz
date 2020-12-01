@@ -1,5 +1,5 @@
 #quizBox, #nameBox {
-    margin: 0 auto;
+    margin: 10 px;
     padding: 20px;
     width: 75%;
     text-align: center;
@@ -8,17 +8,32 @@
 #header {
     font-size: 40px;
     text-align: left;
-    text-decoration: underline;
     padding: 20px;
     margin: 10px;
 }
 
-.scoreBox {
-    border: 1px solid black;
+.quizContainer {
     padding: 5px;
     margin: 10px;
+    background-color: cadetblue;
+    border-radius: 25px;
+    color: white;
 }
 
 .hide {
     display: none;
+}
+
+#name, #highScore {
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.btn {
+    margin: 10px;
+    border-radius: 20px;
+    background-color: darkgray;
+    color: white;
+    align-content: center;
+    border: 1px solid white;
 }

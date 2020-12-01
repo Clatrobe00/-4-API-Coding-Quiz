@@ -9,15 +9,27 @@
 </head>
 <body>
 
-    <div class="row" id="header">
-        <div class="col scoreBox" id="highscore">Highscore
+    <div class="row quizContainer" id="header">
+        <div class="col scoreBox" id="highscore"><h2>Highscore</h2>
+            <div class="row">
+                <div class="col-6">
             <p id="name"></p>
+             </div>
+             <div class="col-6">       
             <p id="highScore"></p>
+            </div>
+            </div>
         </div>
-        <div class="col scoreBox">Time Left: <span id="timeLeft"></span></div>
+        <div class="col timerBox">
+        <div class="col scoreBox"><h2>Time Left:</h2> 
+
+        </div>
+            <div class="col"><span id="timeLeft"></span>
+            </div>
+        </div>
     </div>
 
-    <div class="row">
+    <div class="row quizContainer">
         <div class="col-12" id="quizBox">
             <button type="button" class="btn btn-info" id="startButton">Click to Begin</button>
             <div id="quizQuestions" class="hide">
