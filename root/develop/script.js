@@ -4,7 +4,8 @@ var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
 var quizTimer;
 var scoreInput = document.getElementById('scoreInput');
-
+let name = document.getElementById('name');
+let highScore = document.getElementById('highScore');
 let questions = [
     {
         question: "What do we use to style a webpage?",
@@ -32,7 +33,10 @@ let questions = [
     }
 ]
 
-startButton.addEventListener('click', beginQuiz)
+
+name.textContent = localStorage.getItem('name');
+highScore.textContent = localStorage.getItem('score');
+startButton.addEventListener('click', beginQuiz);
 
 let answerButtons = document.querySelectorAll(".answerButton")
 answerButtons.forEach((button) => {
