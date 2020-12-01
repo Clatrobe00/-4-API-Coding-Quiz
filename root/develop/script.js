@@ -55,6 +55,7 @@ function beginQuiz(timeleft) {
     
 function beginTimer() {
     if(timeleft <= 0){
+    callHighScore()    
     clearInterval(time);
     }
     document.getElementById("timeLeft").textContent = timeleft;
