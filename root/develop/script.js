@@ -1,8 +1,9 @@
 var timeleft = 75
 var startButton = document.getElementById("startButton");
 var i = 0
-var quizBox = document.getElementById('quizBox');
+var quizQuestions = document.getElementById('quizQuestions');
 var quizTimer;
+var scoreInput = document.getElementById('scoreInput');
 
 let questions = [
     {
@@ -41,7 +42,7 @@ answerButtons.forEach((button) => {
 function beginQuiz(timeleft) {
     time = setInterval(beginTimer, 1000);
     eleHide(startButton.id);
-    showQuiz();
+    showContent(quizQuestions.id);
     getNewQuestion(i) 
     }   
     
@@ -53,9 +54,9 @@ function beginTimer() {
     timeleft -= 1;
     };
     
-function showQuiz() {
-    let quizQuestions = document.getElementById("quizQuestions")
-    quizQuestions.setAttribute('class', 'none');
+function showContent(ele) {
+    var revealed = document.getElementById(ele)
+    revealed.setAttribute('class', 'none');
 }   
     
 function eleHide(ele) {
@@ -82,9 +83,7 @@ function evaluate () {
     i++
 
     if (i === questions.length) {
-        window.clearInterval(time);
-        eleHide(quizBox.id);
-        //callHighScore()
+        callHighScore()
         console.log('done');
         return
 
@@ -100,4 +99,10 @@ function subtractTime () {
     console.log(newTime)
     timeleft = newTime -= 10;
     time = setInterval (beginTimer, 1000);
+}
+
+function callHighScore () {
+    window.clearInterval(time);
+    eleHide(quizBox.id);
+    showContent(scoreInput.id);
 }

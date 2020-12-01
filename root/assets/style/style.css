@@ -1,5 +1,4 @@
-#quizBox {
-    border: 1px solid black;
+#quizBox, #nameBox {
     margin: 0 auto;
     padding: 20px;
     width: 75%;

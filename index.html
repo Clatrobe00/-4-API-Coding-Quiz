@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-12" id="quizBox">
-            <button type="button" class="btn btn-primary" id="startButton">Click to Begin</button>
+            <button type="button" class="btn btn-info" id="startButton">Click to Begin</button>
             <div id="quizQuestions" class="hide">
                 <h5 id="question"></h5>
                 <button type="button" class="btn btn-info answerButton" id="A"></button>
@@ -25,9 +25,21 @@
                 <button type="button" class="btn btn-info answerButton" id="D"></button>
             </div>
         </div>
+        <div class="col-12" id="nameBox">
+            <form class="hide" id="scoreInput">
+                <div>
+                <label for="exampleInputEmail1">Your Name</label>
+                <input type="name" class="form-control" id="userNameInput" aria-describedby="nameHelp" placeholder="Enter your name">
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
     </div>
 
-    <script src="./root/develop/script.js"></script>
+    
+            
+                   
+        <script src="./root/develop/script.js"></script>
     
 </body>
 </html>
