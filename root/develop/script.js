@@ -32,25 +32,18 @@ let questions = [
 ]
 
 startButton.addEventListener('click', beginQuiz)
+
 answerButtons = document.querySelectorAll(".answerButton")
 answerButtons.forEach((button) => {
     button.addEventListener('click', evaluate)
 }); 
 
-
 function beginQuiz(timeleft) {
     time = setInterval(beginTimer, 1000);
     eleHide(startButton.id);
-    // I think I need a for loop here to iterate through the questions
     showQuiz();
     getNewQuestion(i) 
-     
-    } 
-
-    //hitOrMiss = verifyAnswer(userAnswer) //verifies the users answer with if statements - should return a boolean
-    //scoreUpdate(hitOrMiss) //uses the boolean value to determine if scores increases
-    //for loop ends here.
-    // need to determine how the function to record the high score will look.    
+    }   
     
 function beginTimer() {
     if(timeleft <= 0){
@@ -60,13 +53,10 @@ function beginTimer() {
     timeleft -= 1;
     };
     
-    
-
 function showQuiz() {
     let quizQuestions = document.getElementById("quizQuestions")
     quizQuestions.setAttribute('class', 'none');
-}
-    
+}   
     
 function eleHide(ele) {
     var hidden = document.getElementById(ele);
@@ -100,27 +90,4 @@ function subtractTime () {
     console.log(newTime)
     timeleft = newTime -= 10;
     time = setInterval (beginTimer, 1000);
-    //document.getElementById('incorrect').addEventListener('click', function() {
-    //    sec -= 5;
-    //    document.getElementById('timerDisplay').innerHTML='00:'+sec;
-    //});
-    //startTimer();
 }
-
-
-
-
-
-
-
-
-// new idea:
-
-// that idea was too work intensive. new idea. seperate 
-
-    
-
-       
-
-  
-    
