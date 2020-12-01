@@ -1,3 +1,4 @@
+var timeleft = 75
 var startButton = document.getElementById("startButton");
 var i = 0
 var quizBox = document.getElementById('quizBox');
@@ -37,7 +38,8 @@ let questions = [
 
 
 function beginQuiz() {
-    beginTimer();
+    time = beginTimer(timeleft);
+    console.log(time);
     eleHide(startButton.id);
     // I think I need a for loop here to iterate through the questions
     showQuiz();
@@ -50,15 +52,16 @@ function beginQuiz() {
     //for loop ends here.
     // need to determine how the function to record the high score will look.    
     
-function beginTimer() {
-    var timeleft = 75;
+function beginTimer(timeleft) {
+    
     var quizTimer = setInterval(function(){
     if(timeleft <= 0){
     clearInterval(quizTimer);
     }
-    document.getElementById("timeLeft").textContent = ": " + timeleft;
+    document.getElementById("timeLeft").textContent = timeleft;
     timeleft -= 1;
     }, 1000);
+    
     }
 
 function showQuiz() {
@@ -86,10 +89,23 @@ function evaluate (event) {
         console.log('correct')
     } else if (event.target.id !== questions[i].correctAnswer) {
         console.log('whoops!')
+        subtractTime()
     }
     i++
     getNewQuestion(i);
 };
+
+function subtractTime () {
+    var time = document.getElementById('timeLeft').textContent;
+    newTime = parseInt(time);
+    newTime = newTime -= 10;
+    beginTimer(newTime);
+    //document.getElementById('incorrect').addEventListener('click', function() {
+    //    sec -= 5;
+    //    document.getElementById('timerDisplay').innerHTML='00:'+sec;
+    //});
+    //startTimer();
+}
 
 
 
