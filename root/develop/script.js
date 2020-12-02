@@ -12,19 +12,19 @@ let highScore = document.getElementById('highScore');
 let questions = [
     {
         question: "What do we use to style a webpage?",
-        answersA: "CSS",
+        answersA: "Jquery",
         answersB: "HTML",
         answersC: "Javascript",
-        answersD: "Jquery",
-        correctAnswer: "A"
+        answersD: "CSS",
+        correctAnswer: "D"
     },
     {
         question: "What do we use to mark up pages?",
-        answersA: "HTML",
+        answersA: "Javascript",
         answersB: "CSS",
-        answersC: "Javascript",
+        answersC: "HTML",
         answersD: "JQuery",
-        correctAnswer: "A"
+        correctAnswer: "C"
     },
     {
         question: "What does CSS stand for?",
@@ -35,11 +35,11 @@ let questions = [
         correctAnswer: "A",
     },
     {
-        question: "What is the color of night?",
-        answersA: "Huh?",
-        answersB: "Sanguine, my brother",
+        question: "What does DOM stand for?",
+        answersA: "Double Octopus Meatloaf",
+        answersB: "Document Object Model",
         answersC: "Oh no I forgot",
-        answersD: "Dark... Blue?",
+        answersD: "Dark Obelisk of Malevolence",
         correctAnswer: "B",
     }
 ]
