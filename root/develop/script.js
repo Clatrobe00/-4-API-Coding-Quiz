@@ -90,11 +90,9 @@ function getNewQuestion (i) {
 
 function evaluateQuestion () {
     if (event.target.id === questions[i].correctAnswer) {
-        console.log('correct')
         rightWrong.textContent = 'correct!'
         setTimeout(fadeout, 1000);
     } else if (event.target.id !== questions[i].correctAnswer) {
-        console.log('whoops!')
         rightWrong.textContent = 'whoops!'
         setTimeout(fadeout, 1000);
         subtractTime()
@@ -103,7 +101,6 @@ function evaluateQuestion () {
 
     if (i === questions.length) {
         endQuizHandler()
-        console.log('done');
         return
     }
 
