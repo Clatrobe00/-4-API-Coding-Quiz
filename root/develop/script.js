@@ -3,10 +3,9 @@ var timeleft = 75
 var startButton = document.getElementById("startButton");
 var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
-var quizTimer;
 let answerButtons = document.querySelectorAll(".answerButton")
 let submitButton = document.getElementById('submitButton')
-var scoreInput = document.getElementById('scoreInput');
+var nameInput = document.getElementById('scoreInput');
 let name = document.getElementById('name');
 let highScore = document.getElementById('highScore');
 let questions = [
@@ -117,7 +116,7 @@ function endQuizHandler () {
     document.getElementById("timeLeft").textContent = timeleft;
     clearInterval(intervalID);
     eleHide(quizBox.id);
-    showContent(scoreInput.id);
+    showContent(nameInput.id);
 }
 
 function saveScore () {
