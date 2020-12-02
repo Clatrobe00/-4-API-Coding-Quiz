@@ -1,7 +1,7 @@
-#quizBox, #nameBox {
+#quizBox, #nameBox, #rightWrong {
     margin: 10 px;
     padding: 20px;
-    width: 75%;
+    width: 100%;
     text-align: center;
 }
 
@@ -29,8 +29,6 @@
     text-align: left;
 }
 
-
-
 .btn {
     margin: 10px;
     border-radius: 20px;
@@ -43,3 +41,10 @@
 .scoreBox, #timeLeft {
     text-align: right;
 }
+
+#fadeout {
+    opacity: 1;
+    transition: 2s opacity;
+    text-align: center;
+    font-size:32px;
+  }

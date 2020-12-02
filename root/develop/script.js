@@ -5,8 +5,9 @@ var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
 let answerButtons = document.querySelectorAll(".answerButton")
 let submitButton = document.getElementById('submitButton')
-var nameInput = document.getElementById('scoreInput');
+var nameInput = document.getElementById('nameInput');
 let name = document.getElementById('name');
+let rightWrong = document.getElementById('rightWrong');
 let highScore = document.getElementById('highScore');
 let questions = [
     {
@@ -52,7 +53,7 @@ submitButton.addEventListener('click', saveScore);
 name.textContent = localStorage.getItem('name');
 highScore.textContent = localStorage.getItem('score');
 
-function beginQuiz(timeleft) {
+function beginQuiz() {
     intervalID = setInterval(beginTimer, 1000);
     eleHide(startButton.id);
     showContent(quizQuestions.id);
@@ -90,8 +91,12 @@ function getNewQuestion (i) {
 function evaluateQuestion () {
     if (event.target.id === questions[i].correctAnswer) {
         console.log('correct')
+        rightWrong.textContent = 'correct!'
+        setTimeout(fadeout, 1000);
     } else if (event.target.id !== questions[i].correctAnswer) {
         console.log('whoops!')
+        rightWrong.textContent = 'whoops!'
+        setTimeout(fadeout, 1000);
         subtractTime()
     }
     i++
@@ -124,3 +129,9 @@ function saveScore () {
     localStorage.setItem('name', document.getElementById('userNameInput').value);
     localStorage.setItem('score', document.getElementById('timeLeft').textContent);
 }
+
+function fadeout() {
+    rightWrong.style.opacity = '0';
+    rightWrong.textContent = ''
+    rightWrong.style.opacity = '1';
+  }
