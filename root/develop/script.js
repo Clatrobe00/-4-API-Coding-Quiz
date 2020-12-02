@@ -4,6 +4,8 @@ var startButton = document.getElementById("startButton");
 var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
 var quizTimer;
+let answerButtons = document.querySelectorAll(".answerButton")
+let submitButton = document.getElementById('submitButton')
 var scoreInput = document.getElementById('scoreInput');
 let name = document.getElementById('name');
 let highScore = document.getElementById('highScore');
@@ -42,18 +44,14 @@ let questions = [
     }
 ]
 
+startButton.addEventListener('click', beginQuiz);
+answerButtons.forEach((button) => {
+    button.addEventListener('click', evaluateQuestion)
+}); 
+submitButton.addEventListener('click', saveScore);
 
 name.textContent = localStorage.getItem('name');
 highScore.textContent = localStorage.getItem('score');
-startButton.addEventListener('click', beginQuiz);
-
-let answerButtons = document.querySelectorAll(".answerButton")
-answerButtons.forEach((button) => {
-    button.addEventListener('click', evaluate)
-}); 
-
-let submitButton = document.getElementById('submitButton')
-submitButton.addEventListener('click', saveScore);
 
 function beginQuiz(timeleft) {
     intervalID = setInterval(beginTimer, 1000);
@@ -64,7 +62,7 @@ function beginQuiz(timeleft) {
     
 function beginTimer() {
     if(timeleft <= 0){
-    callHighScore()    
+    endQuizHandler()    
     clearInterval(intervalID);
     }
     document.getElementById("timeLeft").textContent = timeleft;
@@ -90,7 +88,7 @@ function getNewQuestion (i) {
     document.getElementById('D').textContent = newQuestion.answersD
 };
 
-function evaluate () {
+function evaluateQuestion () {
     if (event.target.id === questions[i].correctAnswer) {
         console.log('correct')
     } else if (event.target.id !== questions[i].correctAnswer) {
@@ -100,28 +98,22 @@ function evaluate () {
     i++
 
     if (i === questions.length) {
-        callHighScore()
+        endQuizHandler()
         console.log('done');
         return
-
     }
 
     getNewQuestion(i);
 };
 
 function subtractTime () {
-    //var currentTime = document.getElementById('timeLeft').textContent;
-    //window.clearInterval(time)
-    //var newTime = parseInt(currentTime);
-    //console.log(newTime)
     timeleft = timeleft - 10;
     if (timeleft <= 0) {
-        callHighScore()
+        endQuizHandler()
     }
-    //time = setInterval (beginTimer, 1000);
 }
 
-function callHighScore () {
+function endQuizHandler () {
     document.getElementById("timeLeft").textContent = timeleft;
     clearInterval(intervalID);
     eleHide(quizBox.id);
