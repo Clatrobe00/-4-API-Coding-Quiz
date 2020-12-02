@@ -122,7 +122,6 @@ function endQuizHandler () {
 }
 
 function saveScore () {
-    event.preventDefault();
     localStorage.setItem('name', document.getElementById('userNameInput').value);
     localStorage.setItem('score', document.getElementById('timeLeft').textContent);
 }
