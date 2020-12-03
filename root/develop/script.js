@@ -1,5 +1,5 @@
 var intervalID = 0
-var timeleft = 74
+var timeleft = 74 
 var startButton = document.getElementById("startButton");
 var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
