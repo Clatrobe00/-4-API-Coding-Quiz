@@ -1,5 +1,5 @@
 var intervalID = 0
-var timeleft = 75
+var timeleft = 74
 var startButton = document.getElementById("startButton");
 var i = 0
 var quizQuestions = document.getElementById('quizQuestions');
@@ -57,6 +57,7 @@ function beginQuiz() {
     intervalID = setInterval(beginTimer, 1000);
     eleHide(startButton.id);
     showContent(quizQuestions.id);
+    document.getElementById("timeLeft").textContent = 75;
     getNewQuestion(i) 
     }   
     
@@ -122,8 +123,11 @@ function endQuizHandler () {
 }
 
 function saveScore () {
+    console.log(parseInt(localStorage.getItem('score')))
+    if (timeleft > parseInt(localStorage.getItem('score'))) {
     localStorage.setItem('name', document.getElementById('userNameInput').value);
     localStorage.setItem('score', document.getElementById('timeLeft').textContent);
+} else {return}
 }
 
 function fadeout() {
