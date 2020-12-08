@@ -50,8 +50,8 @@ answerButtons.forEach((button) => {
 }); 
 submitButton.addEventListener('click', saveScore);
 
-name.textContent = localStorage.getItem('name');
-highScore.textContent = localStorage.getItem('score');
+name.textContent = JSON.parse(window.localStorage.getItem('name'));
+highScore.textContent = JSON.parse(window.localStorage.getItem('score'));
 
 function beginQuiz() {
     intervalID = setInterval(beginTimer, 1000);
@@ -123,10 +123,10 @@ function endQuizHandler () {
 }
 
 function saveScore () {
-    console.log(parseInt(localStorage.getItem('score')))
-    if (timeleft > parseInt(localStorage.getItem('score'))) {
-    localStorage.setItem('name', document.getElementById('userNameInput').value);
-    localStorage.setItem('score', document.getElementById('timeLeft').textContent);
+    console.log(JSON.parse(window.localStorage.getItem('score')))
+    if (timeleft > JSON.parse(window.localStorage.getItem('score'))) {
+    window.localStorage.setItem('name', JSON.stringify(document.getElementById('userNameInput').value));
+    window.localStorage.setItem('score', JSON.stringify(document.getElementById('timeLeft').textContent));
 } else {return}
 }
 
